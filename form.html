@@ -1,0 +1,69 @@
+<div class="form">
+    <p class="contactusheading">Contact Us</p>
+    <div class="twoleftrightdivs">
+        <div class="leftfive">
+            <form id="contact-form">
+                <input
+                    type="text"
+                    name="name"
+                    id="Name"
+                    placeholder="Name"
+                    required
+                /><br /><br />
+                <input
+                    type="text"
+                    name="service_name"
+                    id="ServiceName"
+                    placeholder="Service Name"
+                    required
+                /><br /><br />
+                <input
+                    type="number"
+                    name="phone_number"
+                    id="PhoneNumber"
+                    placeholder="Phone"
+                    required
+                /><br /><br />
+                <input
+                    type="email"
+                    name="email"
+                    id="Email"
+                    placeholder="Email"
+                    required
+                /><br /><br />
+                <textarea
+                    name="message"
+                    id="Message"
+                    placeholder="Message"
+                    cols="30"
+                    rows="10"
+                    required
+                ></textarea><br /><br />
+                <button type="submit" class="btn3">SUBMIT</button>
+            </form>
+        </div>
+        <div class="rightfive"></div>
+    </div>
+</div>
+
+<!-- Include EmailJS SDK -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+    // Initialize EmailJS with your User ID
+    (function() {
+        emailjs.init('HSBaRwC2f2M-YGZC8'); // Replace 'YOUR_USER_ID' with your actual user ID from EmailJS
+    })();
+
+    // Handling form submission
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Send form data using EmailJS
+        emailjs.sendForm('service_drognfd', 'template_2mavcee', this)
+            .then(function(response) {
+                alert('SUCCESS!', response.status, response.text);
+            }, function(error) {
+                alert('FAILED...', error);
+            });
+    });
+</script>
